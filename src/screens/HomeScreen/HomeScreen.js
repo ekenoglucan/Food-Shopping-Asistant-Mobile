@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 import HeaderScreen from '../HeaderScreen/HeaderScreen';
 import { Surface, Stack } from "@react-native-material/core";
 
-
 const HomeScreen = () => {
   const navigation = useNavigation();
 
@@ -14,11 +13,14 @@ const HomeScreen = () => {
   }
 
   return (
+
+    
     
     <View style={styles.container}>
+      
       <HeaderScreen />   
         <Stack fill center spacing={4}>
-
+        
        
         
     <Surface
@@ -144,6 +146,7 @@ const HomeScreen = () => {
               GLUTEN İÇERMEZ
           </Text>
       </Surface>
+      
   </Stack>
   </View>
   )

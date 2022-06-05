@@ -15,7 +15,8 @@ const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
   
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [stackname,setStackName] = useState('');
   
 
 
@@ -24,10 +25,11 @@ const Navigation = () => {
     <NavigationContainer >
       
       {isLoggedIn ? <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="TabScreen" component={TabScreen}/>
+      <Stack.Screen name="TabScreen" component={TabScreen} setStackName = "TabScreen"/>
        <Stack.Screen name="HomeScreen" component={HomeScreen}/>
        <Stack.Screen name="PasswordChangeScreen" component={PasswordChangeScreen}/>
         <Stack.Screen name="HelpScreen" component={HelpScreen}/>
+        
        
         <Stack.Screen name="CameraScreen" component={CameraScreen}/>
       </Stack.Navigator> : 
