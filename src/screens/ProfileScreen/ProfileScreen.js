@@ -4,6 +4,7 @@ import {Text, StyleSheet,  View, Button, SafeAreaView, TouchableOpacity, Image }
 import { Avatar, Title, TouchableRipple } from 'react-native-paper';
 import HeaderScreen from '../HeaderScreen/HeaderScreen';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
 
 
@@ -16,6 +17,19 @@ const ProfileScreen = () => {
     const HelpClicked = () => {
         navigation.navigate('HelpScreen');
     }
+
+    const baseUrl = "https://4aac-88-230-229-180.eu.ngrok.io"
+
+    const fetchData = () =>{
+      axios.get(`${baseUrl}/users`)
+      .then(resp=>{
+        console.warn(resp.data);
+      })  
+      .catch(error=>{
+
+  });
+    
+    };
    
     return(
         <SafeAreaView style={styles.container}>
@@ -33,7 +47,7 @@ const ProfileScreen = () => {
                         }}
                         />   
                 </View>    
-                
+                <Button title="tıkla" onPress={fetchData}></Button>
                 <View style={{marginLeft: -40}}>
                 <Title style={[styles.title, {
                     marginTop: 5,

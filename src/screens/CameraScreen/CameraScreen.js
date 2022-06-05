@@ -79,16 +79,13 @@ export default function CameraScreen() {
       //   setPhoto(undefined);
       // });
     };
-    const baseUrl = "https://10.0.2.2:8000"
+    const baseUrl = "https://4aac-88-230-229-180.eu.ngrok.io"
 
     const fetchData = () =>{
-      axios.get(`${baseUrl}/users`)
+      axios.get(`${baseUrl}/products`)
       .then(resp=>{
         console.warn(resp.data);
-      })  
-      .catch(error=>{
-
-  });
+      });
     
     };
     
