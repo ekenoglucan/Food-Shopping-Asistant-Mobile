@@ -15,7 +15,21 @@ const SignInScreen = () => {
   const navigation = useNavigation();
 
   const onSignInPressed = () => {
-    navigation.navigate('Home');
+    var requestOptions = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "username": email,
+        "password": password
+      }),
+    };
+    fetch("https://7d83-88-230-229-180.eu.ngrok.io/login", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result.message))
+      .catch(error => console.log('error', error));
   }
 
  

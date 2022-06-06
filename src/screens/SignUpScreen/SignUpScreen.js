@@ -15,9 +15,27 @@ const SignUpScreen = () => {
 
   const {height} = useWindowDimensions();
 
-  const onRegisterPressed = async(data) => {
-    navigation.navigate('SignIn');
+  const onRegisterPressed = () => {
 
+    var requestOptions = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "username": email,
+        "password": password,
+        "diets": ["gluten"]
+      }),
+    };
+    fetch("https://7d83-88-230-229-180.eu.ngrok.io/signup", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result.message))
+      .catch(error => console.log('error', error));
+
+
+    navigation.navigate('SignIn');
   }
 
   
