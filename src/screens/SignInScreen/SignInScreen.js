@@ -15,7 +15,21 @@ const SignInScreen = () => {
   const navigation = useNavigation();
 
   const onSignInPressed = () => {
-    navigation.navigate('Home');
+    var requestOptions = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "username": email,
+        "password": password
+      }),
+    };
+    fetch("https://7d83-88-230-229-180.eu.ngrok.io/login", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result.message))
+      .catch(error => console.log('error', error));
   }
 
  
@@ -33,6 +47,7 @@ const SignInScreen = () => {
         resizeMode="contain"
       />
      <Text style={styles.style}>Food Shopping Asistant</Text>
+     <Text style={styles.title}>Giriş Yap</Text>
       
       <CustomInput 
       placeholder="Mail Adresiniz" 
@@ -66,12 +81,13 @@ const SignInScreen = () => {
 
 const styles = StyleSheet.create({
   style:{
-    color: '#1b4171',
+    color: 'black',
     textAlign: 'center',
     fontWeight: 'bold',
     fontStyle: 'italic',
     fontSize: 20,
     padding: 20,
+    bottom: 50
   },
   root:{
     alignItems : 'center',
@@ -81,13 +97,21 @@ const styles = StyleSheet.create({
     
 
   },
+  title:{
+    fontSize : 24,
+    fontWeight:"bold",
+    color:'#051C60',
+    margin: 10, 
+    bottom: 25,
+    left: 90
+},
   logo: {
     width:'50%',
     maxWidth: 300,
     maxHeight:200,
     resizeMode: 'contain',
     paddingVertical: 130,
-    left:85
+    left:75
   },
   
 });

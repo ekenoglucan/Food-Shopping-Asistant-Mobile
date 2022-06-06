@@ -14,8 +14,8 @@ const HeaderScreen = () => {
 
 const styles = StyleSheet.create({
     header: {
-        height: 70,
-        paddingTop: 35,
+        height: 60,
+        width:"100%",
         backgroundColor: '#ff542e',
         
     },
@@ -24,18 +24,10 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 20,
         fontWeight: 'bold',
+        marginTop:28
         
     },
-    headerImage: {
-        width: 110,
-        height: 110,
-        padding: 20
-        
-    },
-    image: {
-        alignItems: 'center',
-        padding: 30
-    }
+    
 });
 
 

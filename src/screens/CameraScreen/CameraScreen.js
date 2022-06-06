@@ -6,6 +6,7 @@ import { shareAsync } from 'expo-sharing';
 import * as MediaLibrary from 'expo-media-library';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import axios from "axios"
+import {TouchableRipple } from 'react-native-paper';
 
 export default function CameraScreen() {
   let cameraRef = useRef();
@@ -92,15 +93,23 @@ export default function CameraScreen() {
   
 
     return (
-      
-      <SafeAreaView style={styles.container}>
-        <Image style={styles.preview} source={{ uri: "data:image/jpg;base64," + photo.base64 }} />
-        
-        <View style ={styles.buttons}>
-        {hasMediaLibraryPermission ? <Button title="Sorgula" onPress={fetchData} /> : undefined}
-        <Image /><Button title="Tekrar" onPress={() => setPhoto(undefined)} /> 
+      <View style={styles.container1}>
+        <View style={styles.photoContainer}>
+          <Image style={styles.preview} source={{ uri: "data:image/jpg;base64," + photo.base64 }} />
         </View>
-      </SafeAreaView>
+        <View style={styles.buttonContainer1}>
+          <View style={styles.button}>
+            {hasMediaLibraryPermission ? <TouchableRipple onPress={fetchData}> 
+            <Text style={{color:"white",fontSize:20}}>SORGULA</Text>
+            </TouchableRipple>: undefined}
+          </View>
+          <View style={styles.button}>
+            <Image /><TouchableRipple onPress={() => setPhoto(undefined)}>
+            <Text style={{color:"white",fontSize:20}}>TEKRAR ÇEK</Text>
+            </TouchableRipple>
+          </View>
+        </View>
+      </View>
     );
   }
 
@@ -125,25 +134,48 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     top: 150,
-    left: 0,
+    left: 5,
     display: "flex",
     width : 400,
     height: 500,  
     alignItems: 'center',
     justifyContent: 'center',
-    
-
   },
-  buttons:{
+  container1:{
+    display:"flex",
+    alignItems: "center",
+    flexDirection: "column",
+    width: "100%",
+    height: "100%",
+    backgroundColor: 'white',
+  },
+  photoContainer: {
+    justifyContent:"center",
+    alignItems: "center",
+    width: 400,
+    height: 500,
+    marginTop:80
+  },
+  buttonContainer1:{
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 20,
-    marginBottom: 20,
-    width: 300,
+    borderColor:"red",
+    marginTop:50,
+    height:100
 
   },
+  button:{
+    width:150,
+    height:70,
+    marginLeft:20,
+    marginRight:20,
+    backgroundColor:"#ff542e",
+    borderRadius:20,
+    justifyContent:"center",
+    alignItems:"center"
+  },
+ 
   take:{
     backgroundColor: 'rgba(52, 52, 52, 0)',
     borderRadius: 20,
@@ -163,7 +195,6 @@ const styles = StyleSheet.create({
     marginBottom: -500,
     // alignSelf: 'end'
 
-    
   },
   preview: {
     alignSelf: 'stretch',

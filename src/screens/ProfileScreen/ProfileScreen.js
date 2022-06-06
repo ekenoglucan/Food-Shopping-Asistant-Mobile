@@ -31,77 +31,53 @@ const ProfileScreen = () => {
     
     };
    
-    return(
-        <SafeAreaView style={styles.container}>
-            <HeaderScreen/>
-            <View style={styles.userInfoSection}>
-                <View>
-                    <Avatar.Image
-                        source={require('../../../assets/profile.jpg',)}
-                        size={80}
-                        style={{
-                            marginTop:10,
-                            marginLeft: 110,
 
-                            
-                        }}
-                        />   
-                </View>    
-                <Button title="tıkla" onPress={fetchData}></Button>
-                <View style={{marginLeft: -40}}>
-                <Title style={[styles.title, {
-                    marginTop: 5,
-                    marginBottom: 5,
-                    marginLeft: 110
+    return(
+       <View style={styles.container}>
+           <View style={styles.innerContainer}>
+           <Avatar.Image
+                source={require('../../../assets/profile.jpg',)}
+                size={160}
+                style={{
+                    marginTop:50
+                }}
+                /> 
+            <Title style={[styles.title, {
                     }
                 ]}> Can Ekenoğlu </Title>
-                </View>
-
-                <View style={styles.userInfoSection}>
-                    <View style={styles.row}>
-                        <IonIcons name="ios-mail" color="grey" size={20} style={{
-                                left: -55
-                        }} />
-                        <Text style={{color:"black", marginLeft: -45}}>ekenoglucan@gmail.com</Text>
+           </View>
+           <View style={styles.innerContainer2}>
+            <View style={styles.row}>
+                <IonIcons name="ios-mail" color="black" size={30} />
+                <Text style={{color:"black",marginLeft:5,fontSize:20}}>ekenoglucan@gmail.com</Text>
+            </View>
+            <View style={styles.row}>
+                <TouchableRipple onPress={PasswordClicked}>
+                    <View style={{display:"flex", flexDirection: "row"}}>
+                        <IonIcons name="md-settings" color="black" size={30} style={{marginTop:20}} />
+                        <Text style={{color:"black",fontSize:20,marginLeft:5,marginTop:20}}>Password Settings</Text>
                     </View>
-                    <TouchableRipple onPress={PasswordClicked}>
-
-                    <View style={{
-                        flexDirection: 'row',
-                        top: 70,}}>
-                        <IonIcons name="md-settings" color="grey" size={20} style={{
-                            left: -55
-                        }} />
-                        <Text style={{color:"black", marginLeft: -45}}>Password Settings</Text>
+                </TouchableRipple >
+            </View>
+            <View style={styles.row}>
+                <TouchableRipple onPress={HelpClicked}>
+                    <View style={{display:"flex", flexDirection: "row"}}>
+                        <IonIcons name="md-help" color="black" size={30} style={{marginTop:20}} />
+                        <Text style={{color:"black",fontSize:20,marginLeft:5,marginTop:20}}>Help</Text>
                     </View>
-                    </TouchableRipple >
-                    
-                    <View style={{
-                        flexDirection: 'row',
-                        top: 90,}}>
-                        <IonIcons name="md-medkit" color="grey" size={20} style={{
-                                left: -55
-                        }} />
-                        <Text style={{color:"black", marginLeft: -45}}>Health Status</Text>
+                </TouchableRipple >
+            </View>
+            <View style={styles.row}>
+                <TouchableRipple>
+                    <View style={{display:"flex", flexDirection: "row"}}>
+                        <IonIcons name="md-log-out" color="red" size={30} style={{marginTop:20, transform: [{rotateY: '180deg'}]} } />
+                        <Text style={{color:"black",fontSize:20,marginLeft:5,marginTop:20}}>Logout</Text>
                     </View>
-                    <TouchableRipple onPress={HelpClicked}>
+                </TouchableRipple >
+            </View>
+           </View>
+       </View>
 
-                    <View style={{
-                        flexDirection: 'row',
-                        top: 110,}}>
-                        <IonIcons name="md-help" color="grey" size={20} style={{
-                            left: -55
-                        }} />
-                        <Text style={{color:"black", marginLeft: -45}}>Help</Text>
-                    </View>
-                    </TouchableRipple>
-
-
-                </View>
-
-
-            </View>               
-        </SafeAreaView>
     );
 }
 
@@ -109,12 +85,34 @@ const ProfileScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
+        display:"flex",
+        flexDirection: "column",
+        alignItems: "center",
+
+        width: "100%",
+        height: "100%",
         backgroundColor: 'white',
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0
+    },
+    innerContainer: {
+        display:"flex",
+        flexDirection: "column",
+        alignItems:"center",
+        width: 400,
+        height: 300,
+        backgroundColor: 'white',
+    },
+    innerContainer2: {
+        display:"flex",
+        flexDirection: "column",
+        width: 400,
+        height: 300,
+        backgroundColor: 'white',
+
+    },
+    row:{
+        display:"flex",
+        flexDirection: "row",
+        
     },
     userInfoSection: {
         paddingHorizontal: 30,
@@ -127,6 +125,7 @@ const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
         top: 50,
+        marginLeft:10
       },
 });
 
