@@ -16,7 +16,6 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
   
   const [isLoggedIn, setIsLoggedIn] = useState(true)
-  const [stackname,setStackName] = useState('');
   
 
 

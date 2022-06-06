@@ -1,10 +1,25 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity, Image } from 'react-native';
 import { Avatar, Title, TouchableRipple } from 'react-native-paper';
+import TabScreen from '../TabScreen';
+import {useNavigation} from '@react-navigation/native';
+import ProfileScreen from '../ProfileScreen';
+import IonIcons from 'react-native-vector-icons/Ionicons'; 
 
 const PasswordChangeScreen = () => {
+
+    const navigation = useNavigation();
+
+    const GoBackPress = () => {
+        navigation.navigate('TabScreen')
+    }
+
+
+
     return(
+        
         <View style={styles.container}>
+        
         <Title style={[styles.title, {
             marginTop: 50,
             marginBottom: 5,
@@ -43,11 +58,15 @@ const PasswordChangeScreen = () => {
 
         <Button
                 raised
-                color="#6C3483"
+                color="#ff542e"
                 icon={{name: 'check'}}
                 title='Şifreyi Degiştir'
                 onPress={() => this.handleButtonPress()} />
 
+        <TouchableRipple onPress={GoBackPress}><IonIcons name="md-arrow-back" color="black" size={70} style={{
+                            left: -50, bottom:395
+                        }} /></TouchableRipple> 
+        
         </View>
         
     );

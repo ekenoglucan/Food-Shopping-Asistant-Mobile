@@ -1,5 +1,5 @@
-import { View, Text, Image,StyleSheet,useWindowDimensions,ScrollView,Alert } from 'react-native'
-import React,{useContext,useState} from 'react'
+import { View, Text, Image,StyleSheet,useWindowDimensions,ScrollView,Alert,Picker } from 'react-native'
+import React,{useContext,useState,Component} from 'react'
 import Logo from '../../../logo2.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
@@ -70,6 +70,8 @@ const SignUpScreen = () => {
       setValue={setPassword}
       secureTextEntry
       />
+    
+
       <CustomButton 
       text="Kayıt Ol" 
       onPress={onRegisterPressed}

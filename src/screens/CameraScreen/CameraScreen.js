@@ -61,33 +61,22 @@ export default function CameraScreen() {
       });
     };
 
-    let savePhoto = () => {
-      let body = new FormData();
-        body.append('photo', {uri: photo.uri, name: 'photo.png',filename :'imageName.png',type: 'image/png'});
-            body.append('Content-Type', 'image/png');
+    const fetchData = () => {
+      var formData = new FormData();
+      formData.append('file', { uri: photo.uri, name: 'photo.png', filename: 'imageName.jpg', type: 'image/jpg' });
 
-        fetch("http://127.0.0.1:8000/photo",{ method: 'POST',headers:{  
-            "Content-Type": "multipart/form-data",
-            "otherHeader": "foo",
-            } , body :body} )
-          .then((res) => checkStatus(res))
-          .then((res) => res.json())
-          .then((res) => { console.log("response" +JSON.stringify(res)); })
-          .catch((e) => console.log(e))
-          .done()
-      // MediaLibrary.saveToLibraryAsync(photo.uri).then(() => {
-      //   setPhoto(undefined);
-      // });
-    };
-    const baseUrl = "https://4aac-88-230-229-180.eu.ngrok.io"
+      var requestOptions = {
+        method: 'POST',
+        body: formData,
+        redirect: 'follow'
+      };
+      fetch("https://16da-88-230-229-180.eu.ngrok.io/photo", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 
-    const fetchData = () =>{
-      axios.get(`${baseUrl}/products`)
-      .then(resp=>{
-        console.warn(resp.data);
-      });
+    }
     
-    };
     
   
 
@@ -142,6 +131,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
     width: 300,
+    color:"ff542e"
 
   },
   take:{
